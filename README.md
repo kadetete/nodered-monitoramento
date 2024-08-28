@@ -7,6 +7,8 @@ Exercício de monitoramento em tempo real: NodeRED
 
 - Após receber a mensagem, o aplicativo verifica se a data/hora contém o número 8. Caso contenha tal número, substitui a data por uma mensagem '8 presente'.
 
-- Verifica também se a mensagem contém 'Bom dia', caso contenha o troca por 'Boa noite'.
+- Verifica também se a mensagem contém 'Bom dia', caso contenha o troca por 'Boa noite', emitindo também um alerta.
 
 - Exibe ambas as informações num text do dashboard.
+
+- Recebe dados de frases aleatórias de uma api e exibe na tela.

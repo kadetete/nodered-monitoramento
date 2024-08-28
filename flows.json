@@ -46,7 +46,8 @@
                 "default": "#0094CE",
                 "baseColor": "#0094CE",
                 "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
+                "edited": true,
+                "reset": false
             },
             "darkTheme": {
                 "default": "#097479",
@@ -136,7 +137,7 @@
     {
         "id": "c154c03a0220b589",
         "type": "ui_group",
-        "name": "Default",
+        "name": "Mensagem",
         "tab": "378cb46bed021033",
         "order": 1,
         "disp": true,
@@ -208,7 +209,9 @@
         "wires": [
             [
                 "5f448d2c92033784",
-                "0af27723f9ee6007"
+                "0af27723f9ee6007",
+                "3f1b0bf0ab10b36c",
+                "370cdb9cf52e48bd"
             ]
         ]
     },
@@ -237,51 +240,11 @@
         "y": 220,
         "wires": [
             [
-                "bfc48538501ecb4e"
+                "bfc48538501ecb4e",
+                "47a2658661666338",
+                "f4a51f66f040f2c5"
             ]
         ]
-    },
-    {
-        "id": "5cd39aaf3613fa22",
-        "type": "ui_text",
-        "z": "46d2545b420eab9d",
-        "group": "c154c03a0220b589",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Data de envio:",
-        "format": "{{msg.payload.data}}",
-        "layout": "row-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 880,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "bfc48538501ecb4e",
-        "type": "ui_text",
-        "z": "46d2545b420eab9d",
-        "group": "c154c03a0220b589",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Texto:",
-        "format": "{{msg.payload.texto}}",
-        "layout": "row-center",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 870,
-        "y": 340,
-        "wires": []
     },
     {
         "id": "5f448d2c92033784",
@@ -304,13 +267,14 @@
         "repair": false,
         "outputs": 2,
         "x": 350,
-        "y": 220,
+        "y": 280,
         "wires": [
             [
                 "20a428f19e3c07d2"
             ],
             [
-                "bfc48538501ecb4e"
+                "bfc48538501ecb4e",
+                "47a2658661666338"
             ]
         ]
     },
@@ -324,7 +288,7 @@
         "rules": [
             {
                 "t": "cont",
-                "v": "8",
+                "v": "12",
                 "vt": "num"
             },
             {
@@ -335,13 +299,14 @@
         "repair": false,
         "outputs": 2,
         "x": 350,
-        "y": 400,
+        "y": 380,
         "wires": [
             [
                 "6a5aaaf6cf5fd653"
             ],
             [
-                "5cd39aaf3613fa22"
+                "5cd39aaf3613fa22",
+                "19d2b2ee488db9cc"
             ]
         ]
     },
@@ -355,7 +320,7 @@
                 "t": "set",
                 "p": "payload.data",
                 "pt": "msg",
-                "to": "8 presente",
+                "to": "12 presente",
                 "tot": "str"
             }
         ],
@@ -364,11 +329,88 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 630,
-        "y": 400,
+        "x": 690,
+        "y": 380,
         "wires": [
             [
-                "5cd39aaf3613fa22"
+                "5cd39aaf3613fa22",
+                "19d2b2ee488db9cc"
+            ]
+        ]
+    },
+    {
+        "id": "47a2658661666338",
+        "type": "debug",
+        "z": "46d2545b420eab9d",
+        "name": "debug texto",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.texto",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "19d2b2ee488db9cc",
+        "type": "debug",
+        "z": "46d2545b420eab9d",
+        "name": "debug data",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.data",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "3f1b0bf0ab10b36c",
+        "type": "debug",
+        "z": "46d2545b420eab9d",
+        "name": "debug inicial",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 350,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "370cdb9cf52e48bd",
+        "type": "http request",
+        "z": "46d2545b420eab9d",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://dummyjson.com/quotes/random",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "67ae88a9def86d89",
+                "cb4fb839a66de6b6"
             ]
         ]
     },
@@ -397,5 +439,124 @@
                 "84e0a1173623d53c"
             ]
         ]
+    },
+    {
+        "id": "5cd39aaf3613fa22",
+        "type": "ui_text",
+        "z": "46d2545b420eab9d",
+        "group": "c154c03a0220b589",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Data de envio:",
+        "format": "{{msg.payload.data}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1040,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "bfc48538501ecb4e",
+        "type": "ui_text",
+        "z": "46d2545b420eab9d",
+        "group": "c154c03a0220b589",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Texto:",
+        "format": "{{msg.payload.texto}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 1050,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "67ae88a9def86d89",
+        "type": "ui_text",
+        "z": "46d2545b420eab9d",
+        "group": "c154c03a0220b589",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Frase do momento:",
+        "format": "{{msg.payload.quote}}",
+        "layout": "row-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 530,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "cb4fb839a66de6b6",
+        "type": "debug",
+        "z": "46d2545b420eab9d",
+        "name": "debug quote",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.quote",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f4a51f66f040f2c5",
+        "type": "function",
+        "z": "46d2545b420eab9d",
+        "name": "function 3",
+        "func": "msg.topic = \"Bom dia detectado, mudando para Boa noite\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 160,
+        "wires": [
+            [
+                "16c8a44677dbb865"
+            ]
+        ]
+    },
+    {
+        "id": "16c8a44677dbb865",
+        "type": "ui_toast",
+        "z": "46d2545b420eab9d",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Alerta",
+        "x": 1170,
+        "y": 140,
+        "wires": []
     }
 ]
